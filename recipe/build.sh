@@ -8,9 +8,10 @@ export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL="True"
 export GRPC_PYTHON_BUILD_SYSTEM_CARES="True"
 
 if [[ `uname` == 'Darwin' ]]; then
+    export CC=$(basename "${CC}")
     export PATH="$SRC_DIR:$PATH"
-    cp $RECIPE_DIR/clang_wrapper.sh $SRC_DIR/clang
-    chmod +x $SRC_DIR/clang
+    cp $RECIPE_DIR/clang_wrapper.sh $SRC_DIR/$CC
+    chmod +x $SRC_DIR/$CC
 fi
 
 $PYTHON -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
