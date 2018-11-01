@@ -12,7 +12,7 @@ source:
     - windows_ssl_lib_names.patch
 
 build:
-  number: 0
+  number: 1000
   # protobuf does not support Visual C++ 2008, skip windows py27
   skip: True  # [win and vc<10]
 
