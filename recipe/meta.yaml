@@ -1,4 +1,4 @@
-{% set version = "1.14.1" %}
+{% set version = "1.16.0" %}
 
 package:
   name: grpcio
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/g/grpcio/grpcio-{{ version }}.tar.gz
-  sha256: 4bf23666e763ca7ff6010465864e9f088f4ac7ecc1e11abd6f85b250e66b2c05
+  sha256: 0cc5f2d3ee21c642d8982f197c83053fd3a8cbcd6a60240d8c87c6c256b10d57
   patches:
     - macos_use_distutils.patch
     - windows_ssl_lib_names.patch             # [win and openssl != "1.1.1"]
