@@ -1,0 +1,27 @@
+diff --git a/setup.py b/setup.py
+index 5eb54b4..e67ba8c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -183,6 +183,14 @@ if BUILD_WITH_SYSTEM_CARES:
+ EXTENSION_INCLUDE_DIRECTORIES = (
+     (PYTHON_STEM,) + CORE_INCLUDE + SSL_INCLUDE + ZLIB_INCLUDE +
+     NANOPB_INCLUDE + CARES_INCLUDE + ADDRESS_SORTING_INCLUDE)
++EXTENSION_LIB_DIRECTORIES = ()
++if "win32" in sys.platform:
++  LIBRARY_INC = os.environ.get('LIBRARY_INC', None)
++  if LIBRARY_INC is not None:
++    EXTENSION_INCLUDE_DIRECTORIES += (LIBRARY_INC, )
++  LIBRARY_LIB = os.environ.get('LIBRARY_LIB', None)
++  if LIBRARY_LIB is not None:
++    EXTENSION_LIB_DIRECTORIES += (LIBRARY_LIB, )
+ 
+ EXTENSION_LIBRARIES = ()
+ if "linux" in sys.platform:
+@@ -251,6 +259,7 @@ def cython_extensions_and_necessity():
+           sources=[module_file] + list(CYTHON_HELPER_C_FILES) + core_c_files,
+           include_dirs=list(EXTENSION_INCLUDE_DIRECTORIES),
+           libraries=list(EXTENSION_LIBRARIES),
++          library_dirs=list(EXTENSION_LIB_DIRECTORIES),
+           define_macros=list(DEFINE_MACROS),
+           extra_objects=extra_objects,
+           extra_compile_args=list(CFLAGS),

@@ -11,6 +11,7 @@ source:
     - macos_use_distutils.patch
     - windows_ssl_lib_names.patch             # [win and openssl != "1.1.1"]
     - windows_ssl_lib_names_openssl111.patch  # [win and openssl == "1.1.1"]
+    - extra_include_and_lib_dirs.patch        # [win]
 
 build:
   number: 1000
@@ -19,8 +20,8 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}     # [not win]
+    - {{ compiler('cxx') }}   # [not win]
   host:
     - python
     - pip
@@ -30,6 +31,8 @@ requirements:
     - zlib
     - openssl
     - c-ares            # [unix]
+    - m2w64-toolchain   # [win]
+    - libpython         # [win]
   run:
     - python
     - setuptools
@@ -39,6 +42,7 @@ requirements:
     - zlib
     - openssl
     - {{ pin_compatible("c-ares") }}  # [unix]
+    - m2w64-gcc-libs   # [win]
 
 test:
   imports:
