@@ -16,4 +16,7 @@ if [[ `uname` == 'Darwin' ]]; then
     chmod +x $SRC_DIR/$CC
 fi
 
+ln -s "$CC" "$SRC_DIR/cc"
+export PATH="$SRC_DIR:$PATH"
+
 $PYTHON -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
