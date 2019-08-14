@@ -6,6 +6,7 @@ export GRPC_PYTHON_LDFLAGS=""
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB="True"
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL="True"
 export GRPC_PYTHON_BUILD_SYSTEM_CARES="True"
+export GRPC_PYTHON_USE_PREBUILT_GRPC_CORE="False"
 
 if [[ `uname` == 'Darwin' ]]; then
     export CC=$(basename "${CC}")
