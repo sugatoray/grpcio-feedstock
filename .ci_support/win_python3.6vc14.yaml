@@ -1,13 +1,9 @@
-c_compiler:
-- vs2015
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
-cxx_compiler:
-- vs2015
 openssl:
-- 1.0.2
+- 1.1.1a
 pin_run_as_build:
   openssl:
     max_pin: x.x.x
@@ -25,7 +21,5 @@ vc:
 zip_keys:
 - - python
   - vc
-  - c_compiler
-  - cxx_compiler
 zlib:
 - '1.2'
