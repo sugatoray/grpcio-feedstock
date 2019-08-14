@@ -25,6 +25,7 @@ requirements:
   host:
     - python
     - pip
+    - cython
     - six >=1.5.2
     - futures >=2.2.0   # [py27]
     - enum34 >=1.0.4    # [py27]
