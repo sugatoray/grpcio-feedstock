@@ -1,8 +1,8 @@
 diff --git a/setup.py b/setup.py
-index 5eb54b4..24d1566 100644
+index 4f787c05cf..6aa45454ca 100644
 --- a/setup.py
 +++ b/setup.py
-@@ -192,7 +192,10 @@ if not "win32" in sys.platform:
+@@ -223,7 +223,10 @@ if not "win32" in sys.platform:
  if "win32" in sys.platform:
    EXTENSION_LIBRARIES += ('advapi32', 'ws2_32',)
  if BUILD_WITH_SYSTEM_OPENSSL:

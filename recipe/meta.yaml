@@ -1,4 +1,4 @@
-{% set version = "1.16.0" %}
+{% set version = "1.22.0" %}
 
 package:
   name: grpcio
@@ -6,15 +6,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/g/grpcio/grpcio-{{ version }}.tar.gz
-  sha256: 0cc5f2d3ee21c642d8982f197c83053fd3a8cbcd6a60240d8c87c6c256b10d57
+  sha256: 8805d486c6128cc0fcc8ecf16c4095d99a8693a541ef851429ab334e028a4a97
   patches:
-    - macos_use_distutils.patch
-    - windows_ssl_lib_names.patch             # [win and openssl != "1.1.1"]
-    - windows_ssl_lib_names_openssl111.patch  # [win and openssl == "1.1.1"]
+    - windows_ssl_lib_names.patch             # [win and openssl != "1.1.1" and openssl != "1.1.1a"]
+    - windows_ssl_lib_names_openssl111.patch  # [win and (openssl == "1.1.1" or openssl == "1.1.1a")]
     - extra_include_and_lib_dirs.patch        # [win]
 
 build:
-  number: 1000
+  number: 0
   # protobuf does not support Visual C++ 2008, skip windows py27
   skip: True  # [win and vc<10]
 
@@ -25,6 +24,7 @@ requirements:
   host:
     - python
     - pip
+    - cython
     - six >=1.5.2
     - futures >=2.2.0   # [py27]
     - enum34 >=1.0.4    # [py27]
