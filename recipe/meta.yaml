@@ -13,9 +13,7 @@ source:
     - 0001-fix-win-setup-cmds.patch
 
 build:
-  number: 1
-  # protobuf does not support Visual C++ 2008, skip windows py27
-  skip: True  # [win and vc<10]
+  number: 0
 
 requirements:
   build:
@@ -26,8 +24,6 @@ requirements:
     - pip
     - cython
     - six >=1.5.2
-    - futures >=2.2.0   # [py27]
-    - enum34 >=1.0.4    # [py27]
     - zlib
     - openssl
     - c-ares            # [unix]
@@ -35,8 +31,6 @@ requirements:
     - python
     - setuptools
     - six >=1.5.2
-    - futures >=2.2.0   # [py27]
-    - enum34 >=1.0.4    # [py27]
     - zlib
     - openssl
     - {{ pin_compatible("c-ares") }}  # [unix]
@@ -56,7 +50,7 @@ test:
 
 about:
   home: https://grpc.io
-  license: Apache 2.0
+  license: Apache-2.0
   license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
   license_family: APACHE
   summary: HTTP/2-based RPC framework
