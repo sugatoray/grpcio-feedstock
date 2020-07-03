@@ -24,6 +24,8 @@ requirements:
   host:
     - python
     - pip
+    # TODO evaluate if this can be relaxed
+    - setuptools <48.0.0a0
     - cython
     - six >=1.5.2
     - zlib
