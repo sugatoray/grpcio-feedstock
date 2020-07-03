@@ -37,6 +37,8 @@ requirements:
     - {{ pin_compatible("c-ares") }}  # [unix]
 
 test:
+  requires:
+    - pip
   imports:
     - grpc
     - grpc._cython
@@ -48,6 +50,8 @@ test:
     - grpc.framework.interfaces
     - grpc.framework.interfaces.base
     - grpc.framework.interfaces.face
+  commands:
+    - python -m pip check
 
 about:
   home: https://grpc.io
