@@ -1,28 +1,17 @@
-From 5958d5f96cea3f4ea5250cd3fbb9b8d69615df2e Mon Sep 17 00:00:00 2001
-From: Jonathan Helmus <jjhelmus@gmail.com>
-Date: Mon, 17 Feb 2020 15:45:06 -0600
-Subject: [PATCH 2/2] windows ssl lib names
-
----
- setup.py | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/setup.py b/setup.py
-index 1565a39..8809e57 100644
---- a/setup.py
-+++ b/setup.py
-@@ -263,7 +263,10 @@ if not "win32" in sys.platform:
- if "win32" in sys.platform:
-   EXTENSION_LIBRARIES += ('advapi32', 'ws2_32',)
+--- setup.py	2020-06-22 17:42:24.000000000 -0400
++++ setup.py	2020-07-03 15:21:22.021362099 -0400
+@@ -247,10 +247,10 @@
+         'dbghelp',
+     )
  if BUILD_WITH_SYSTEM_OPENSSL:
--  EXTENSION_LIBRARIES += ('ssl', 'crypto',)
-+  if not "win32" in sys.platform:
-+    EXTENSION_LIBRARIES += ('ssl', 'crypto',)
-+  else:
-+    EXTENSION_LIBRARIES += ('libssl', 'libcrypto',)
+-    EXTENSION_LIBRARIES += (
+-        'ssl',
+-        'crypto',
+-    )
++    if not "win32" in sys.platform:
++        EXTENSION_LIBRARIES += ('ssl', 'crypto',)
++    else:
++        EXTENSION_LIBRARIES += ('libssl', 'libcrypto',)
  if BUILD_WITH_SYSTEM_ZLIB:
-   EXTENSION_LIBRARIES += ('z',)
+     EXTENSION_LIBRARIES += ('z',)
  if BUILD_WITH_SYSTEM_CARES:
--- 
-2.20.1
-

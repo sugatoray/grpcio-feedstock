@@ -5,7 +5,7 @@ Home: https://grpc.io
 
 Package license: Apache-2.0
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: HTTP/2-based RPC framework
 
@@ -197,6 +197,7 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@bollwyvl](https://github.com/bollwyvl/)
 * [@jcrist](https://github.com/jcrist/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 
