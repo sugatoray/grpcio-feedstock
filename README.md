@@ -192,4 +192,5 @@ Feedstock Maintainers
 * [@bollwyvl](https://github.com/bollwyvl/)
 * [@jcrist](https://github.com/jcrist/)
 * [@ocefpaf](https://github.com/ocefpaf/)
+* [@tswast](https://github.com/tswast/)
 
