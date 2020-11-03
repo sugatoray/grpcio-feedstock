@@ -9,6 +9,8 @@ Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/grpcio-feedstoc
 
 Summary: HTTP/2-based RPC framework
 
+Development: https://pypi.org/project/grpcio/
+
 Current build status
 ====================
 
