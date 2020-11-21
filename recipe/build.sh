@@ -10,7 +10,7 @@ export GRPC_PYTHON_BUILD_SYSTEM_CARES="True"
 export GRPC_PYTHON_USE_PREBUILT_GRPC_CORE=""
 export GRPC_PYTHON_BUILD_WITH_CYTHON="True"
 
-if [[ `uname` == 'Darwin' ]]; then
+if [[ "$target_platform" == osx-* ]]; then
     export CC=$(basename "${CC}")
     export PATH="$SRC_DIR:$PATH"
     export GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation"
@@ -18,7 +18,11 @@ if [[ `uname` == 'Darwin' ]]; then
     chmod +x $SRC_DIR/$CC
 fi
 
-ln -s "$CC" "$SRC_DIR/cc"
+if [[ "$target_platform" == osx-64 ]]; then
+    export CFLAGS="$CFLAGS -DTARGET_OS_OSX=1"
+fi
+
+ln -s "$(which CC)" "$SRC_DIR/cc"
 export PATH="$SRC_DIR:$PATH"
 
 $PYTHON -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
