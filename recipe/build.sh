@@ -12,11 +12,7 @@ export GRPC_PYTHON_USE_PREBUILT_GRPC_CORE=""
 export GRPC_PYTHON_BUILD_WITH_CYTHON="True"
 
 if [[ "$target_platform" == osx-* ]]; then
-    export CC=$(basename "${CC}")
-    export PATH="$SRC_DIR:$PATH"
     export GRPC_PYTHON_LDFLAGS=" -framework CoreFoundation"
-    cp $RECIPE_DIR/clang_wrapper.sh $SRC_DIR/$CC
-    chmod +x $SRC_DIR/$CC
 fi
 
 if [[ "$target_platform" == osx-64 ]]; then
