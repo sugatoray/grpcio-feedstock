@@ -33,7 +33,7 @@ requirements:
     - zlib
     - openssl
     - c-ares            # [unix]
-    - pthread-stubs     # [unix]
+    - pthread-stubs     # [linux]
   run:
     - python
     - setuptools
