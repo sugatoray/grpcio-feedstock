@@ -1,23 +1,24 @@
---- setup.py	2020-09-08 17:38:30.000000000 -0400
-+++ setup.new.py	2020-10-10 16:54:10.161026749 -0400
+--- setup.py	2021-07-20 19:26:11.000000000 -0400
++++ setup.py	2021-07-24 15:17:29.916938943 -0400
 @@ -23,7 +23,6 @@
  UnixCCompiler.src_extensions.append('.S')
  del UnixCCompiler
- 
+
 -from distutils import cygwinccompiler
  from distutils import extension as _extension
  from distutils import util
  import os
-@@ -163,6 +162,8 @@
- 
- 
+@@ -197,6 +196,9 @@
+
+
  def check_linker_need_libatomic():
 +    if sys.platform == 'win32':
 +        return False
++
      """Test if linker on system needs libatomic."""
      code_test = (b'#include <atomic>\n' +
                   b'int main() { return std::atomic<int64_t>{}; }')
-@@ -184,7 +185,7 @@
+@@ -229,7 +231,7 @@
  EXTRA_ENV_COMPILE_ARGS = os.environ.get('GRPC_PYTHON_CFLAGS', None)
  EXTRA_ENV_LINK_ARGS = os.environ.get('GRPC_PYTHON_LDFLAGS', None)
  if EXTRA_ENV_COMPILE_ARGS is None:
@@ -26,7 +27,7 @@
      if 'win32' in sys.platform:
          if sys.version_info < (3, 5):
              EXTRA_ENV_COMPILE_ARGS += ' -D_hypot=hypot'
-@@ -196,14 +197,12 @@
+@@ -241,10 +243,6 @@
                  EXTRA_ENV_COMPILE_ARGS += ' -D_ftime=_ftime32 -D_timeb=__timeb32 -D_ftime_s=_ftime32_s'
              else:
                  EXTRA_ENV_COMPILE_ARGS += ' -D_ftime=_ftime64 -D_timeb=__timeb64'
@@ -36,14 +37,8 @@
 -            EXTRA_ENV_COMPILE_ARGS += ' /MT'
      elif "linux" in sys.platform:
          EXTRA_ENV_COMPILE_ARGS += ' -std=gnu99 -fvisibility=hidden -fno-wrapv -fno-exceptions'
-+        EXTRA_ENV_COMPILE_ARGS += ' -std=c++11'
      elif "darwin" in sys.platform:
-         EXTRA_ENV_COMPILE_ARGS += ' -stdlib=libc++ -fvisibility=hidden -fno-wrapv -fno-exceptions'
-+        EXTRA_ENV_COMPILE_ARGS += ' -std=c++11'
- 
- if EXTRA_ENV_LINK_ARGS is None:
-     EXTRA_ENV_LINK_ARGS = ''
-@@ -212,6 +211,7 @@
+@@ -257,6 +255,7 @@
          if check_linker_need_libatomic():
              EXTRA_ENV_LINK_ARGS += ' -latomic'
      elif "win32" in sys.platform and sys.version_info < (3, 5):
