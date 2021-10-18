@@ -375,6 +375,7 @@ Feedstock Maintainers
 =====================
 
 * [@bollwyvl](https://github.com/bollwyvl/)
+* [@hmaarrfk](https://github.com/hmaarrfk/)
 * [@jcrist](https://github.com/jcrist/)
 * [@ocefpaf](https://github.com/ocefpaf/)
 * [@tswast](https://github.com/tswast/)
