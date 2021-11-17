@@ -1,4 +1,4 @@
-{% set version = "1.41.1" %}
+{% set version = "1.42.0" %}
 
 package:
   name: grpcio
@@ -6,7 +6,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/g/grpcio/grpcio-{{ version }}.tar.gz
-  sha256: 9b751271b029432a526a4970dc9b70d93eb6f0963b6a841b574f780b72651969
+  sha256: 4a8f2c7490fe3696e0cdd566e2f099fb91b51bc75446125175c55581c2f7bc11
   patches:
     - 0001-Monkey-patch-distutils.ccompiler.spawn-to-elide-std-.patch
     - 0002-windows-ssl-lib-names.patch
@@ -14,7 +14,7 @@ source:
     - 0001-fix-win-commands.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [python_impl == 'pypy']
 
 requirements:
