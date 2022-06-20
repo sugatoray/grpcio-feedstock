@@ -1,3 +1,10 @@
+ARCHIVED
+--------
+
+This has beeen moved into [grpc-cpp](https://github.com/conda-forge/grpcpp-feedstock)
+
+---
+
 About grpcio
 ============
 
